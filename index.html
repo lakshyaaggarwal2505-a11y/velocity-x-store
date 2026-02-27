@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOCITY X | Elite Sportswear</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* PAGE REVEAL */
+body{
+opacity:0;
+animation:reveal 1.2s ease forwards;
+}
+@keyframes reveal{
+to{opacity:1;}
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+.loader-text{
+font-size:30px;
+letter-spacing:4px;
+animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+0%,100%{opacity:1;}
+50%{opacity:0.3;}
+}
+
+/* SCROLL PROGRESS */
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#ff0000,#ff6a00);
+width:0%;
+z-index:3000;
+}
+
+/* GLASS NAVBAR */
+header{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+z-index:1000;
+}
+
+.logo{
+font-weight:900;
+letter-spacing:2px;
+}
+
+nav a{
+margin-left:25px;
+color:#fff;
+text-decoration:none;
+transition:0.3s;
+}
+nav a:hover{
+color:#ff3c00;
+}
+
+/* HERO VIDEO */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+.hero-content{
+position:relative;
+z-index:2;
+}
+.hero h1{
+font-size:70px;
+font-weight:900;
+}
+.gradient-btn{
+padding:15px 40px;
+border:none;
+background:linear-gradient(90deg,#ff0000,#ff6a00);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+margin-top:20px;
+transition:0.3s;
+}
+.gradient-btn:hover{
+transform:scale(1.05);
+}
+
+/* PARALLAX */
+.parallax{
+background:url('https://images.unsplash.com/photo-1526401281623-3424a96e0e18?auto=format&fit=crop&w=1500&q=80') center/cover fixed;
+height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+font-weight:700;
+}
+
+/* PRODUCTS */
+.products{
+padding:100px 8%;
+text-align:center;
+}
+.filter-btns button{
+margin:10px;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+background:#222;
+color:#fff;
+}
+.filter-btns button:hover{
+background:#ff3c00;
+}
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
+}
+.card{
+background:#111;
+padding:20px;
+border-radius:10px;
+}
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+.price{
+color:#aaa;
+margin:10px 0;
+}
+
+/* NEWSLETTER */
+.newsletter{
+padding:80px 8%;
+text-align:center;
+background:#111;
+}
+.newsletter input{
+padding:12px;
+width:250px;
+border:none;
+margin-right:10px;
+}
+.newsletter button{
+padding:12px 25px;
+border:none;
+background:linear-gradient(90deg,#ff0000,#ff6a00);
+color:#fff;
+cursor:pointer;
+}
+
+/* ANIMATED CURSOR */
+.cursor{
+position:fixed;
+width:20px;
+height:20px;
+border:2px solid #ff3c00;
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:0.1s;
+z-index:4000;
+}
+
+footer{
+padding:40px;
+text-align:center;
+background:#000;
+color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader"><div class="loader-text">VELOCITY X</div></div>
+<div id="progress"></div>
+<div class="cursor"></div>
+
+<header>
+<div class="logo">VELOCITY X</div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Men</a>
+<a href="#">Women</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-a-man-doing-push-ups-1572/1080p.mp4" type="video/mp4">
+</video>
+<div class="hero-content">
+<h1>JUST MOVE</h1>
+<button class="gradient-btn">Shop Now</button>
+</div>
+</section>
+
+<section class="parallax">
+UNLEASH PERFORMANCE
+</section>
+
+<section class="products">
+<h2>Featured Products</h2>
+
+<div class="filter-btns">
+<button onclick="filter('all')">All</button>
+<button onclick="filter('shoes')">Shoes</button>
+<button onclick="filter('clothing')">Clothing</button>
+</div>
+
+<div class="product-grid">
+<div class="card shoes">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=80">
+<h3>Runner Pro</h3>
+<div class="price">$120</div>
+</div>
+
+<div class="card clothing">
+<img src="https://images.unsplash.com/photo-1588361861040-ac9b1018f6d5?auto=format&fit=crop&w=800&q=80">
+<h3>Elite Hoodie</h3>
+<div class="price">$80</div>
+</div>
+</div>
+</section>
+
+<section class="newsletter">
+<h2>Join The Movement</h2>
+<input type="email" placeholder="Enter your email">
+<button>Subscribe</button>
+</section>
+
+<footer>
+© 2026 VELOCITY X. All rights reserved.
+</footer>
+
+<script>
+/* LOADER */
+window.addEventListener("load",()=>{
+document.getElementById("loader").style.display="none";
+});
+
+/* SCROLL PROGRESS */
+window.onscroll=function(){
+let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+};
+
+/* FILTER */
+function filter(category){
+let cards=document.querySelectorAll('.card');
+cards.forEach(card=>{
+if(category==="all"){
+card.style.display="block";
+}else{
+card.style.display=card.classList.contains(category)?"block":"none";
+}
+});
+}
+
+/* CURSOR */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+</script>
+
+</body>
+</html>
